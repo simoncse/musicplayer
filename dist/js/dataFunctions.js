@@ -18,6 +18,7 @@ const getResultsFromAPI = async (query) => {
   };
 
   try {
+    console.log("trying to post to serverless");
     const dataStream = await fetch("./.netlify/functions/get_results", {
       method: "POST",
       body: JSON.stringify(params),
