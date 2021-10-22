@@ -23,14 +23,16 @@ class IDSearch {
 
       const input = this.form.querySelector("input").value;
 
-      validVideoId(input, (result) => {
+      const id = this.convertToId(input);
+
+      validVideoId(id, (result) => {
         if (!result) {
-          console.log("invalid video id ", input);
+          console.log("invalid video id ", id);
           return;
         } else {
-          console.log("valid video id ", input);
+          console.log("valid video id ", id);
           // Store.setCurrentSong(new Song({ id: this.query }));
-          dispatchIDChangedEvent({ videoId: input });
+          dispatchIDChangedEvent({ videoId: id });
         }
       });
     });
@@ -38,6 +40,21 @@ class IDSearch {
 
   isSelected() {
     return Settings.currentSearchMethod() === "IDSearch";
+  }
+
+  convertToId(input) {
+    let id;
+    const onlyId = /^[\S]{11}$/;
+    const URL_REGEX =
+      /(?:youtube(?:-nocookie)?\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/;
+    if (input.match(URL_REGEX)) {
+      id = input.match(URL_REGEX)[1];
+    } else if (input.match(onlyId)) {
+      id = input;
+    } else {
+    }
+    console.log(id);
+    return id;
   }
 }
 
