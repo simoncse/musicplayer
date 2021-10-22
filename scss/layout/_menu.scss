@@ -1,0 +1,36 @@
+.menu {
+  padding: 1.5rem 0;
+  display: flex;
+  align-items: center;
+
+  visibility: hidden;
+
+  &.visible {
+    visibility: visible;
+  }
+
+  @include mq(768px) {
+    padding: 2rem 0;
+  }
+  button {
+    padding: 0.5rem;
+    letter-spacing: 0.3px;
+    border-radius: 5px;
+    background: none;
+    color: $font-text;
+    font-weight: 700;
+    border: 1px solid $accent;
+    cursor: pointer;
+  }
+
+  button.active {
+    background: $font-text;
+    border: none;
+    color: darken($accent, 20%);
+    border: 1px solid $font-text;
+  }
+
+  .searhByID-btn {
+    margin-left: 1rem;
+  }
+}

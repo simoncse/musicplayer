@@ -1,0 +1,20 @@
+$length: 34px;
+.playCycle {
+  // @include flexCenter;
+  width: $length;
+  height: $length;
+  position: absolute;
+  cursor: pointer;
+  i {
+    font-size: 1.6rem;
+  }
+
+  top: calc(50% - 17px);
+  left: calc(50% - 17px);
+}
+
+.playCycle.no-repeat {
+  i {
+    color: grey;
+  }
+}

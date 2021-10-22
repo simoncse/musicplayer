@@ -1,0 +1,128 @@
+.searchBar {
+  color: $font-text;
+  position: absolute;
+  width: 100%;
+  min-height: 100%;
+  border-radius: 5px;
+  box-shadow: $box-shadow;
+  transition: box-shadow 0.25s ease-in-out, background 0.25s ease-in-out;
+  background: transparent;
+
+  @include flexCenter;
+  flex-direction: column;
+
+  &:focus-within {
+    box-shadow: $box-shadow;
+    background: transparent;
+  }
+
+  .searchBar-form {
+    border-radius: 5px;
+    width: 100%;
+    display: inline-flex;
+    padding: 0.4rem;
+  }
+
+  input {
+    flex-grow: 1;
+    color: $font-text;
+    font-size: 1.2rem;
+    width: 100%;
+    outline: none;
+    border: none;
+    background-color: transparent;
+    padding-left: 0.2rem;
+
+    &::placeholder {
+      color: rgba(lightgray, 0.9);
+      font-size: 0.9rem;
+    }
+  }
+
+  button[type="submit"] {
+    border: none;
+    background: none;
+    cursor: pointer;
+    i {
+      padding-right: 0.3rem;
+      font-size: 1.4rem;
+      color: $font-text;
+    }
+  }
+}
+
+.searchResults {
+  z-index: 5; //fontawesome icon bug fix;
+  max-height: 40vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+
+  background: rgba(black, 0.9);
+  font-size: 0.7rem;
+  overflow-y: auto;
+
+  visibility: hidden;
+  opacity: 0;
+  &.visible {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  @include mq(768px) {
+    font-size: 0.85rem;
+  }
+
+  .searchResult {
+    padding: 0.3rem 0.5rem;
+    width: 100%;
+    cursor: pointer;
+
+    &:nth-child(1) {
+      padding-top: 0.4rem;
+    }
+
+    .channel {
+      display: none;
+    }
+
+    @include mq(768px) {
+      display: flex;
+      align-items: center;
+      padding: 0.4rem;
+      justify-content: space-between;
+      gap: 1rem;
+      .title {
+        justify-self: flex-start;
+      }
+
+      .channel {
+        display: block;
+        justify-self: flex-end;
+        font-style: italic;
+      }
+    }
+
+    button {
+      flex-basis: 10%;
+      padding-right: 0.4rem;
+      border: none;
+      font-size: 1.6rem;
+      background: none;
+      color: inherit;
+      cursor: pointer;
+      transform: translateY(0);
+      transition: transform 0.25s ease-in-out;
+
+      &:hover {
+        transform: translateY(-0.1rem);
+      }
+    }
+
+    transition: $backgroundTransit;
+    &:hover {
+      background: $accent;
+      // background: red;
+    }
+  }
+}

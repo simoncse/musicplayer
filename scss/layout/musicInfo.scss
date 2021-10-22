@@ -1,0 +1,47 @@
+.musicInfo {
+  width: 100%;
+  color: $font-text;
+  @include flexStartCol;
+  gap: 0.9rem;
+  align-self: center;
+  text-align: center;
+  // row-gap: 0.4rem;
+
+  @include mq(768px) {
+    gap: 1rem;
+  }
+
+  h2 {
+    width: 80%;
+    // background: crimson;
+    // margin-top: 1rem;
+    font-size: 0.8rem;
+
+    @include mq(768px) {
+      margin-top: 0;
+      font-size: 1.2rem;
+    }
+  }
+}
+
+.playingCover {
+  @include flexCenter;
+  width: calc(320px * 2 / 3);
+  height: calc(180px * 2 / 3);
+  border-radius: 5px;
+
+  @include mq(768px) {
+    width: 320px;
+    height: 180px;
+  }
+  border-radius: 5px;
+  // border: 1px solid orange;
+  // background-image: url("https://img.youtube.com/vi/a3sYPX17cFk/mqdefault.jpg");
+  background-size: cover;
+
+  opacity: 0%;
+  transition: opacity 1s ease-in-out;
+  &.show {
+    opacity: 100%;
+  }
+}

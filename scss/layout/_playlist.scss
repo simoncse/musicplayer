@@ -1,0 +1,145 @@
+.playlist {
+  color: $font-text;
+  width: 100%;
+  justify-self: center;
+
+  display: flex;
+  flex-direction: column;
+  background: transparent;
+  border-radius: 5px;
+  box-shadow: $box-shadow;
+  overflow: hidden;
+
+  @include mq(768px) {
+  }
+
+  .playlist-header {
+    width: 100%;
+    @include flexCenter;
+    justify-content: space-between;
+    // margin: 0.2rem 0;
+
+    padding: 0.3rem 0;
+    padding-left: 0.5rem;
+
+    @include mq(768px) {
+      padding: 0.5rem 0.9rem 0.8rem 0.6rem;
+    }
+
+    border-bottom: 1px solid rgba(white, 0.5);
+
+    h2 {
+      display: none;
+      font-weight: normal;
+      font-size: 1.2rem;
+
+      @include mq(768px) {
+        display: block;
+      }
+    }
+
+    @include mq(768px) {
+      // margin-bottom: 1rem;
+    }
+  }
+}
+
+.addMusic-btn {
+  cursor: pointer;
+
+  span {
+    display: none;
+    font-size: 0.9rem;
+    padding-right: 0.8rem;
+
+    @include mq(768px) {
+      display: inline;
+    }
+  }
+
+  &:hover {
+    color: rgba(rgb(247, 96, 70), 0.9);
+  }
+}
+
+.playlist-items {
+  font-size: 0.75rem;
+  @include mq(1024px) {
+    font-size: 0.9rem;
+  }
+}
+
+.playlist-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.6rem 0.6rem 0.3rem 0;
+  border-bottom: 1px solid rgba($accent, 0.2);
+
+  @include mq(1024px) {
+    padding-bottom: 0.6rem;
+  }
+
+  .title {
+    padding-left: 0.7rem;
+    flex: 1 0 60%;
+
+    @include mq(768px) {
+      flex-basis: 45%;
+    }
+  }
+
+  .duration {
+    flex: 0 0 auto;
+    margin-right: 2rem;
+  }
+  .delete {
+    flex: 0 0 auto;
+    text-align: center;
+    padding-right: 0.3rem;
+    @include flexCenter;
+    // margin-right: 0.1rem;
+    i {
+      width: 100%;
+    }
+  }
+
+  cursor: pointer;
+  transition: $backgroundTransit;
+  &:hover,
+  &.active {
+    background: lighten($accent, 5%);
+  }
+}
+
+.playlist .delete {
+  font-size: 0.8rem;
+  cursor: pointer;
+
+  @include mq(768px) {
+    font-size: 1.1rem;
+  }
+
+  i {
+    transform: scale(1);
+    transition: transform 0.2s ease-in-out;
+  }
+  &:hover i {
+    transform: scale(1.2);
+  }
+}
+
+//handle scrollbar
+.playlist-items {
+  flex-grow: 0;
+  overflow: auto;
+
+  &::-webkit-scrollbar {
+    width: 8px;
+    background-color: $accent;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: $light;
+    border-radius: 5px;
+  }
+}

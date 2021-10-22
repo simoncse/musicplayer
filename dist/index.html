@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Youtube Music Player</title>
+	<script src="https://unpkg.com/phosphor-icons"></script>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="css/main.css">
+</head>
+
+<body>
+
+	<div class="ytplayer-container">
+		<div id="ytplayer"></div>
+	</div>
+	<main>
+		<section id="searchBar-wrapper" class="searchBar-wrapper">
+			<div id=searchBar class="searchBar">
+				<form class="searchBar-form" id="searchBar-form" autocomplete="off">
+					<input id="searchBar-input" class="searchBar-input" type="text" , placeholder="">
+					<button id="searchBar-btn" type="submit">
+						<i class="ph-magnifying-glass"></i>
+					</button>
+				</form>
+				<!-- 
+				<ul class="searchResults">
+					<li class="searchResult" id="searchResult">
+						<div class="title">Title 1</div>
+						<div class="channel">channel 1</div>
+						<button class="add-btn">+</button>
+					</li>
+					<li class="searchResult" id="searchResult">
+						<div class="title">Title 1</div>
+						<div class="channel">channel 1</div>
+						<button class="add-btn">+</button>
+					</li>
+					<li class="searchResult" id="searchResult">
+						<div class="title">Title 1</div>
+						<div class="channel">channel 1</div>
+						<button class="add-btn">+</button>
+					</li>
+				</ul> -->
+
+			</div>
+
+		</section>
+
+		<section id="menu" class="menu">
+			<button id="searchByName-btn" class="searhByName-btn">Name Search</button>
+			<button id="searchByID-btn" class="searhByID-btn">Youtube ID or URL</button>
+
+
+		</section>
+
+		<section id="musicInfo" class="musicInfo">
+			<h2 id="playingTitle" class="playingTitle"> </h2>
+
+
+			<div id="playingCover" class="playingCover">
+
+			</div>
+		</section>
+
+		<section id="playlist" class="playlist">
+			<div class="playlist-header">
+				<h2>playlist</h2>
+				<div id="addMusic-btn" class="addMusic-btn">
+					<span>add current song</span><i class="fas fa-plus"></i>
+				</div>
+			</div>
+
+
+			<!-- <button id="toggle-playlist" class="toggle-playlist"> playlist</button> -->
+			<ul id="playlist-items" class="playlist-items">
+				<!-- <li class="playlist-item">
+					<div class="title">Song 1</div>
+					<div class="duration">10:00</div>
+					<div class="delete"><i class="fas fa-trash-alt"></i></div>
+				</li>
+				<li class="playlist-item">
+					<div class="title">Song 2</div>
+					<div class="duration">10:00</div>
+					<div class="delete"><i class="fas fa-trash-alt"></i></div>
+
+				</li>
+				<li class="playlist-item">
+					<div class="title">Song 2</div>
+					<div class="duration">10:00</div>
+					<div class="delete"><i class="fas fa-trash-alt"></i></div>
+
+				</li>
+
+				<li class="playlist-item active">
+					<div class="title">Song 3</div>
+					<div class="duration">10:00</div>
+					<div class="delete"><i class="fas fa-trash-alt"></i></div>
+
+				</li> -->
+
+
+			</ul>
+		</section>
+
+		<section id="playerControl" class="playerControl">
+			<div class="song-slider">
+				<input id="slider" type="range" value="0" max="100" class="progress-bar">
+				<div id="currentTime" class="current-time">00:00</div>
+				<div id="songDuration" class="song-duration">--:--</div>
+			</div>
+
+			<div id="playerControl-main" class="playerControl-main">
+
+				<button id="prevBtn" class="prev">
+					<i class="ph-skip-back-fill"></i>
+				</button>
+				<div id="volume-wrapper" class="volume-wrapper">
+					<div class="volume-container rotation">
+						<div class="volume-flex">
+							<button id="volumeBtn" class="volumeBtn">
+								<i class="ph-speaker-simple-high-fill"></i>
+								<i class="ph-speaker-simple-low-fill none"></i>
+								<i class="ph-speaker-simple-x-fill none"></i>
+
+
+							</button>
+							<input id="volumeSlider" type="range" value="0" max="100" class="volume-bar">
+						</div>
+
+					</div>
+
+
+				</div>
+
+
+				<button id="playBtn" class="play-btn pause">
+					<span></span>
+					<span></span>
+				</button>
+
+				<div id="cycle-wrapper" class="cycle-wrapper">
+					<button id="playCycleBtn" class="playCycle">
+						<i class="ph-repeat-fill"></i>
+						<i class="ph-repeat-once-fill none"></i>
+					</button>
+				</div>
+
+				<button id="nextBtn" class="next">
+					<i class="ph-skip-forward-fill"></i>
+				</button>
+			</div>
+		</section>
+
+
+
+
+	</main>
+
+
+
+	<script src="./js/main.js" type="module"></script>
+</body>
+
+</html>

@@ -1,0 +1,73 @@
+//define the button width and height first because they will be used to calculate the correct position
+$length: 34px;
+.volumeBtn {
+  width: $length;
+  height: $length;
+  @include flexCenter;
+  //   background: blue;
+
+  cursor: pointer;
+
+  i {
+    font-size: 1.6rem;
+    transform: rotate(90deg);
+    pointer-events: none;
+  }
+}
+
+.volume-container {
+  width: 150px;
+  height: $length;
+  position: absolute;
+  //   border: 2px dashed green;
+  display: flex;
+  align-items: center;
+}
+
+.volume-flex {
+  height: 100%;
+  width: $length;
+  display: inline-flex;
+  gap: 3px;
+  align-items: center;
+  overflow: hidden;
+  transition: 0.5s;
+
+  * {
+    flex: 0 0 auto;
+  }
+}
+.volume-flex:hover {
+  flex-grow: 1;
+}
+
+.rotation {
+  top: calc(50% - 17px);
+  left: calc(50% - 17px);
+  transform-origin: 17px 17px;
+  transform: rotate(-90deg);
+}
+
+//For testing
+// .rotation:hover{
+//   transform:rotate(-90deg);
+// }
+
+.volume-bar {
+  cursor: pointer;
+  margin-bottom: 0.8rem;
+  height: 6px;
+  border-radius: 5px;
+  background-color: $light;
+  -webkit-appearance: none;
+
+  &::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 0.8rem;
+    height: 0.8rem;
+    border-radius: 50%;
+    background: #fff;
+  }
+}
+
+//style the rest in js

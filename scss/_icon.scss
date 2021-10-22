@@ -1,0 +1,28 @@
+.playingCover.music-note {
+  width: 90px;
+  height: 90px;
+  border-width: 20px 10px 0px 10px;
+  border-style: solid;
+  border-color: $accent;
+  position: relative;
+
+  &::after,
+  &::before {
+    content: "";
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background-color: $accent;
+    border-radius: 50px 0px 50px 50px;
+  }
+
+  &::after {
+    left: -30px;
+    bottom: -22px;
+  }
+
+  &::before {
+    right: -10px;
+    bottom: -22px;
+  }
+}
