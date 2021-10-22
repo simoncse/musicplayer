@@ -120,9 +120,10 @@ class UI {
 
   static hightlightSong(id) {
     if (!id) return;
+    console.log("setting highlight");
     let selector = `[data-id='${id}']`;
     const list = document.getElementById("playlist-items");
-    if (list.querySelectorAll("li").length > 1) {
+    if (list.querySelectorAll("li").length >= 1) {
       console.log("here");
       list.querySelectorAll("li").forEach((li) => {
         li.classList.remove("active");
