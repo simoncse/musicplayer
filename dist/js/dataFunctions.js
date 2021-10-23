@@ -13,12 +13,11 @@ const getResultsFromAPI = async (query) => {
   // }
 
   const params = {
-    max: 10,
+    max: 20,
     query: query,
   };
 
   try {
-    console.log("trying to post to serverless");
     const dataStream = await fetch("./.netlify/functions/get_results", {
       method: "POST",
       body: JSON.stringify(params),
@@ -26,7 +25,7 @@ const getResultsFromAPI = async (query) => {
     const jsonData = await dataStream.json();
     return jsonData;
   } catch (err) {
-    console.error(err);
+    console.error(err.message);
   }
 };
 

@@ -1,4 +1,5 @@
 import { Settings } from "./Settings.js";
+import UI from "./UI.js";
 
 class InstantSearch {
   /**
@@ -17,10 +18,7 @@ class InstantSearch {
     };
 
     this.elements.resultsContainer.classList.add("searchResults");
-    // this.elements.resultsContainer.dataset.searchDropdown = "";
     this.elements.main.appendChild(this.elements.resultsContainer);
-
-    console.log(this.elements.input);
   }
 
   /**
@@ -30,13 +28,10 @@ class InstantSearch {
     let delay;
     this.elements.input.addEventListener("input", () => {
       if (!this.isSelected()) {
-        console.log("you didn't choose this");
         return;
       }
-      //   if (this.isSelected === false) return;
 
       clearTimeout(delay);
-      console.log("you choose name search");
       const query = this.elements.input.value;
       delay = setTimeout(() => {
         if (query.length < 3) {
@@ -45,6 +40,7 @@ class InstantSearch {
         }
         this.performSearch(query).then((results) => {
           this.populateResults(results);
+          this.scrollBacktoTop();
           this.elements.resultsContainer.style.display = "flex";
           this.elements.resultsContainer.classList.add("visible");
           // this.elements.resultsContainer.classList.add("visible");
@@ -75,7 +71,6 @@ class InstantSearch {
       this.elements.resultsContainer.appendChild(
         this.createResultElement(result)
       );
-      console.log("creating a result");
     }
   }
 
@@ -107,35 +102,23 @@ class InstantSearch {
   async performSearch(query) {
     try {
       const resData = await this.options.getResultsFromAPI(query);
+      if (resData.quotaExceeded) {
+        UI.showModal(
+          "<p>Youtube API daily quota exceeded. Use URL/ID search option instead. </p>"
+        );
+        return;
+      }
       return this.options.responseParser(resData);
     } catch (err) {
       console.log("something went wrong");
       console.log(err);
     }
-    // const url = new URL(this.options.searchUrl.toString());
-    // const [part, q, type, maxResults, key] = this.options.queryParam;
-    // url.searchParams.set(part, "snippet");
-    // url.searchParams.set(q, query);
-    // url.searchParams.set(type, "video");
-    // url.searchParams.set(maxResults, 10);
-    // url.searchParams.set(key, "AIzaSyDqQ6y7K_EL00uni9DF2j0alG9WG9Hoj8c");
-    // console.log(url);
-    // return fetch(url, {
-    //   method: "get",
-    // })
-    //   .then((response) => {
-    //     if (response.status !== 200) {
-    //       throw new Error("Something went wrong with the search!");
-    //     }
-    //     return response.json();
-    //   })
-    //   .then((responseData) => {
-    //     return this.options.responseParser(responseData);
-    //   })
-    //   .catch((error) => {
-    //     console.error(error);
-    //     return [];
-    //   });
+  }
+  scrollBacktoTop() {
+    const previousSearch = this.elements.main.querySelector(".searchResults");
+    if (previousSearch) {
+      previousSearch.scrollTop = 0;
+    }
   }
 }
 
