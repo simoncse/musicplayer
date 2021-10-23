@@ -10,13 +10,11 @@
   box-shadow: $box-shadow;
   overflow: hidden;
 
-  @include mq(768px) {
-  }
-
   .playlist-header {
     width: 100%;
-    @include flexCenter;
-    justify-content: space-between;
+    display: flex;
+    align-items: center;
+    // justify-content: space-between;
     // margin: 0.2rem 0;
 
     padding: 0.3rem 0;
@@ -46,15 +44,14 @@
 
 .addMusic-btn {
   cursor: pointer;
+  @include flexCenter;
 
-  span {
-    display: none;
-    font-size: 0.9rem;
-    padding-right: 0.8rem;
+  @include mq(768px) {
+    margin-left: 1rem;
+  }
 
-    @include mq(768px) {
-      display: inline;
-    }
+  i {
+    font-size: 1.1rem;
   }
 
   &:hover {

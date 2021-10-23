@@ -264,7 +264,11 @@ const handleClickSearchItem = () => {
 
 //playlist functions
 const handleAddToPlaylist = () => {
-  if (Playlist.inPlaylist(currentSong)) return;
+  if (Playlist.inPlaylist(currentSong)) {
+    UI.showModal("Already saved in playlist");
+
+    return;
+  }
 
   UI.addSongToList(currentSong);
   UI.hightlightSong(currentSong.id);

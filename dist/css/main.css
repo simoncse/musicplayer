@@ -88,7 +88,7 @@ main {
 
 .ytplayer-container {
   position: absolute;
-  opacity: 0.4;
+  opacity: 0;
 }
 
 .playlist {
@@ -105,9 +105,7 @@ main {
 .playlist .playlist-header {
   width: 100%;
   display: flex;
-  justify-content: center;
   align-items: center;
-  justify-content: space-between;
   padding: 0.3rem 0;
   padding-left: 0.5rem;
   border-bottom: 1px solid rgba(255, 255, 255, 0.5);
@@ -129,16 +127,17 @@ main {
 }
 .addMusic-btn {
   cursor: pointer;
-}
-.addMusic-btn span {
-  display: none;
-  font-size: 0.9rem;
-  padding-right: 0.8rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 @media only screen and (min-width: 768px) {
-  .addMusic-btn span {
-    display: inline;
+  .addMusic-btn {
+    margin-left: 1rem;
   }
+}
+.addMusic-btn i {
+  font-size: 1.1rem;
 }
 .addMusic-btn:hover {
   color: rgba(247, 96, 70, 0.9);
@@ -636,6 +635,86 @@ main {
 .playingCover.music-note::before {
   right: -10px;
   bottom: -22px;
+}
+
+.modal {
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem;
+  background: rgba(0, 0, 0, 0.4);
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+.modal.modal__show {
+  opacity: 1;
+}
+
+.modal__inner {
+  background: #111111;
+  width: 100%;
+  max-width: 400px;
+  overflow: hidden;
+  border-radius: 5px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #ece2e2;
+}
+
+.modal__top {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+  flex-flow: row-reverse;
+}
+
+.modal__close {
+  color: white;
+  border: none;
+  background: none;
+  outline: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  padding: 0.5rem;
+}
+.modal__close i {
+  font-size: 1rem;
+}
+.modal__close:hover {
+  color: #f76a28;
+}
+
+.modal__content {
+  font-size: 0.9rem;
+  padding: 0.5rem;
+  line-height: 1.5;
+}
+
+.modal__bottom {
+  text-align: right;
+  padding: 0 0.5rem 0.5rem 0.5rem;
+}
+
+.modal__button {
+  display: inline-block;
+  padding: 0.3rem;
+  background: #f17c52;
+  border: none;
+  outline: none;
+  border-radius: 3px;
+  color: #ece2e2;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+.modal__button:hover {
+  background: #f76c39;
 }
 
 /*# sourceMappingURL=main.css.map */

@@ -1,0 +1,81 @@
+$gap: 0.5rem;
+
+.modal {
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  @include flexCenter;
+  padding: $gap;
+  background: rgba(0, 0, 0, 0.4);
+  opacity: 0;
+  transition: opacity 0.4s;
+
+  &.modal__show {
+    opacity: 1;
+  }
+}
+
+.modal__inner {
+  background: rgb(17, 17, 17);
+  width: 100%;
+  max-width: 400px;
+  overflow: hidden;
+  border-radius: 5px;
+  border: 1px solid $light;
+  color: $font-text;
+}
+
+.modal__top {
+  border-bottom: 1px solid $light;
+  display: flex;
+  align-items: center;
+  flex-flow: row-reverse;
+}
+
+.modal__close {
+  color: white;
+  border: none;
+  background: none;
+  outline: none;
+  @include flexCenter;
+  cursor: pointer;
+  padding: $gap;
+
+  i {
+    font-size: 1rem;
+  }
+
+  &:hover {
+    color: $accent;
+  }
+}
+
+.modal__content {
+  font-size: 0.9rem;
+  padding: $gap;
+  line-height: 1.5;
+}
+
+.modal__bottom {
+  text-align: right;
+  padding: 0 $gap $gap $gap;
+}
+
+.modal__button {
+  display: inline-block;
+  padding: 0.3rem;
+  background: rgb(241, 124, 82);
+  border: none;
+  outline: none;
+  border-radius: 3px;
+  color: $font-text;
+  cursor: pointer;
+  font-size: 0.9rem;
+
+  &:hover {
+    background: rgb(247, 108, 57);
+  }
+}

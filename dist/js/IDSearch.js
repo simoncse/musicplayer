@@ -1,5 +1,6 @@
 import { validVideoId, dispatchIDChangedEvent } from "./helper.js";
 import { Settings } from "./Settings.js";
+import UI from "./UI.js";
 
 class IDSearch {
   /**
@@ -28,10 +29,10 @@ class IDSearch {
       validVideoId(id, (result) => {
         if (!result) {
           console.log("invalid video id ", id);
+          UI.showModal("<p>Incorrect URL or video ID</p>");
           return;
         } else {
           console.log("valid video id ", id);
-          // Store.setCurrentSong(new Song({ id: this.query }));
           dispatchIDChangedEvent({ videoId: id });
         }
       });
@@ -52,6 +53,7 @@ class IDSearch {
     } else if (input.match(onlyId)) {
       id = input;
     } else {
+      UI.showModal("<p>Incorrect URL or video ID</p>");
     }
     console.log(id);
     return id;

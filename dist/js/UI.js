@@ -177,6 +177,40 @@ class UI {
       btn.querySelectorAll("i")[2].classList.add("none");
     }
   }
+
+  static showModal(contentHtml) {
+    const modal = document.createElement("div");
+
+    modal.classList.add("modal");
+    modal.innerHTML = `
+    <div class="modal__inner">
+    <div class="modal__top">
+      <button class="modal__close" type="button">
+        <i class="ph-x"></i>
+      </button>
+    </div>
+    <div class="modal__content">
+      <p>${contentHtml}</p>
+    </div>
+    <div class="modal__bottom">
+      <button type="button" class="modal__button">OK</button>
+    </div>
+  </div>
+    `;
+
+    modal.querySelector(".modal__close").addEventListener("click", () => {
+      document.body.removeChild(modal);
+    });
+
+    modal.querySelector(".modal__button").addEventListener("click", () => {
+      document.body.removeChild(modal);
+    });
+
+    document.body.appendChild(modal);
+    setTimeout(() => {
+      modal.classList.add("modal__show");
+    }, 5);
+  }
 }
 
 function setInputPlaceHolder(text) {
