@@ -5,13 +5,16 @@ class UI {
   static displaySearchMethod(method) {
     const nameBtn = document.getElementById("searchByName-btn");
     const IDBtn = document.getElementById("searchByID-btn");
+    const searchBtn = document.getElementById("searchBar-btn");
     if (method === "nameSearch") {
       nameBtn.classList.add("active");
       IDBtn.classList.remove("active");
+      searchBtn.classList.add("none");
       setInputPlaceHolder("Search for a song on Youtube");
     } else if (method === "IDSearch") {
       IDBtn.classList.add("active");
       nameBtn.classList.remove("active");
+      searchBtn.classList.remove("none");
       setInputPlaceHolder("Youtube video ID or full URL");
     }
     document.getElementById("menu").classList.add("visible");
