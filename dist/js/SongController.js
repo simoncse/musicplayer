@@ -15,12 +15,10 @@ const MusicInfoClosure = () => {
   //control how many times render method can be run
   const reset = (bool) => {
     executed = !bool;
-    console.log("resetting");
   };
 
   const renderToDOM = (song) => {
     if (executed) return;
-    console.log("render music info onle once");
     if (isEmpty(song)) {
       UI.resetImage();
     } else {
@@ -36,15 +34,10 @@ const MusicInfoClosure = () => {
     }
   };
 
-  const log = () => {
-    console.log("test");
-  };
-
   return {
     reset: reset,
     renderToDOM: renderToDOM,
     updateCurrentSong: updateCurrentSong,
-    log: log,
   };
 };
 

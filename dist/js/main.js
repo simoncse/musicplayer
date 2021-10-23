@@ -21,7 +21,6 @@ Playlist.inPlaylist(currentSong) && UI.hightlightSong(currentSong.id);
 
 handleSearchMethodChange();
 MusicInfo.renderToDOM(currentSong);
-console.log(currentSong);
 
 document.addEventListener("readystatechange", (event) => {
   if (event.target.readyState === "complete") {
@@ -66,19 +65,16 @@ window.onYouTubeIframeAPIReady = function () {
 };
 
 function onPlayerReady(event) {
-  console.log("ready");
+  console.log("player ready");
 
   runSongfromStorage();
 
   document.addEventListener("VideoIDChanged", (e) => {
-    console.log("new video id has been found");
     player.loadVideoById(e.detail.videoId);
     currentSong.id = e.detail.videoId;
-    console.log(currentSong);
     MusicInfo.reset(true);
 
     if (Playlist.inPlaylist(currentSong)) {
-      console.log("in playlist");
       UI.hightlightSong(currentSong.id);
     } else {
       UI.resetHightlightSong();
@@ -116,7 +112,6 @@ function onPlayerReady(event) {
   //player control : previous and next
   document.getElementById("prevBtn").addEventListener("click", handlePrevBtn);
   document.getElementById("nextBtn").addEventListener("click", handleNextBtn);
-  console.log(currentSong);
 
   //play cycle control
   const playCycleBtn = document.getElementById("playCycleBtn");
@@ -125,7 +120,6 @@ function onPlayerReady(event) {
 
 let interval;
 function onPlayerStateChange(event) {
-  // console.log(event.data);
   clearInterval(interval);
 
   if (event.data === YT.PlayerState.ENDED) {
@@ -141,7 +135,6 @@ function onPlayerStateChange(event) {
     const { title } = player.getVideoData();
     currentSong.title = title;
     currentSong.duration = player.getDuration();
-    console.log(currentSong);
     MusicInfo.renderToDOM(currentSong);
     MusicInfo.updateCurrentSong(currentSong);
 
@@ -173,7 +166,6 @@ function onPlayerStateChange(event) {
 
 // Procedural functions
 const runSongfromStorage = () => {
-  console.log("run song after refresh (ls)");
   if (!Store.getCurrentSong()) return;
 
   player.loadVideoById(Store.getCurrentSong().id);
@@ -253,8 +245,6 @@ const handleClickSearchItem = () => {
     const resultItem = e.target.closest(".searchResult[data-id]");
     if (!resultItem) return;
 
-    console.log(resultItem);
-
     dispatchIDChangedEvent({ videoId: resultItem.dataset.id });
     document.querySelector(".searchResults").classList.remove("visible");
     document.querySelector(".searchResults").style.display = "none";
@@ -280,7 +270,6 @@ const handlePlayList = (e) => {
   const deleteBtn = e.target.closest(".delete");
   if (deleteBtn) {
     const id = deleteBtn.parentElement.dataset.id;
-    console.log(id);
     UI.removeSong(deleteBtn);
     Store.removeSong(id);
     return;
@@ -289,7 +278,6 @@ const handlePlayList = (e) => {
   //select a song to play;
   const selectedSong = e.target.closest("[data-id]");
   if (selectedSong) {
-    console.log("playlist controller:");
     Playlist.loadSong(selectedSong.dataset.id);
     UI.hightlightSong(selectedSong.dataset.id);
   }

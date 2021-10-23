@@ -55,7 +55,6 @@ class Store {
     const songs = Store.getSongs();
     songs.forEach((song, index) => {
       if (song.id === id) {
-        console.log("found the song to be deleted");
         songs.splice(index, 1);
       }
     });

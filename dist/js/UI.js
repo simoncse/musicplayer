@@ -51,7 +51,6 @@ class UI {
     slider.value = callback.getCurrentTime();
     currentTime.innerText = formatTime(slider.value);
     const valPercent = (slider.value / slider.max) * 100;
-    // console.log(valPercent);
     slider.style.background = `linear-gradient(to right,#F5A66F ${valPercent}%, rgba(255,255,255,0.2)  ${valPercent}%)`;
   }
 
@@ -80,7 +79,6 @@ class UI {
     cover.classList.remove("show");
     cover.classList.remove("music-note");
     const src = "http://img.youtube.com/vi/" + id + "/mqdefault.jpg";
-    console.log(src);
     cover.style.backgroundImage = `url('${src}')`;
     cover.classList.add("show");
   }
@@ -120,11 +118,9 @@ class UI {
 
   static hightlightSong(id) {
     if (!id) return;
-    console.log("setting highlight");
     let selector = `[data-id='${id}']`;
     const list = document.getElementById("playlist-items");
     if (list.querySelectorAll("li").length >= 1) {
-      console.log("here");
       list.querySelectorAll("li").forEach((li) => {
         li.classList.remove("active");
       });
@@ -142,7 +138,6 @@ class UI {
   }
 
   static updatePlayCycle(cycle) {
-    console.log(cycle);
     const btn = document.getElementById("playCycleBtn");
 
     switch (cycle) {

@@ -133,10 +133,16 @@
 
   &::-webkit-scrollbar {
     width: 8px;
-    background-color: $accent;
   }
-  &::-webkit-scrollbar-thumb {
+
+  &::-webkit-scrollbar-track {
+    width: 8px;
+    border-radius: 5px;
     background-color: $light;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: lighten($accent, 20%);
     border-radius: 5px;
   }
 }

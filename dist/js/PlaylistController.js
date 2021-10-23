@@ -13,7 +13,6 @@ const PlaylistClosure = () => {
   let currentIndex;
 
   const inPlaylist = (currentSong) => {
-    console.log("in playlist??");
     if (Store.getSongs().some((s) => s.id === currentSong.id)) {
       return true;
     } else {
@@ -24,7 +23,6 @@ const PlaylistClosure = () => {
   const setIndex = (currentSong) => {
     let songs = Store.getSongs();
     currentIndex = songs.findIndex((song) => song.id === currentSong.id);
-    console.log(currentIndex);
   };
 
   const loadSong = (id) => {
@@ -34,13 +32,11 @@ const PlaylistClosure = () => {
   const startNext = () => {
     let songs = Store.getSongs();
     let nextId;
-    console.log(currentIndex);
     if (currentIndex === songs.length - 1) {
       nextId = songs[0].id;
     } else {
       nextId = songs[currentIndex + 1].id;
     }
-    console.log(nextId);
     loadSong(nextId);
     UI.hightlightSong(nextId);
   };

@@ -217,10 +217,14 @@ main {
 }
 .playlist-items::-webkit-scrollbar {
   width: 8px;
-  background-color: #f76a28;
+}
+.playlist-items::-webkit-scrollbar-track {
+  width: 8px;
+  border-radius: 5px;
+  background-color: rgba(255, 255, 255, 0.2);
 }
 .playlist-items::-webkit-scrollbar-thumb {
-  background-color: rgba(255, 255, 255, 0.2);
+  background: #fbae8a;
   border-radius: 5px;
 }
 
@@ -576,6 +580,18 @@ main {
 }
 .searchResults .searchResult:hover {
   background: #f76a28;
+}
+.searchResults::-webkit-scrollbar {
+  width: 8px;
+}
+.searchResults::-webkit-scrollbar-track {
+  width: 8px;
+  border-radius: 5px;
+  background-color: rgba(255, 255, 255, 0.2);
+}
+.searchResults::-webkit-scrollbar-thumb {
+  background: #fbae8a;
+  border-radius: 5px;
 }
 
 .menu {

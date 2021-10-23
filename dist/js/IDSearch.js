@@ -55,7 +55,6 @@ class IDSearch {
     } else {
       UI.showModal("<p>Incorrect URL or video ID</p>");
     }
-    console.log(id);
     return id;
   }
 }
